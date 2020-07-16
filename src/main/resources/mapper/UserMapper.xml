@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cinsos.zx.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.cinsos.zx.entity.User" >
+        <result column="user_oid" property="user_oid" jdbcType="VARCHAR"/>
+        <result column="user_name" property="user_name" jdbcType="VARCHAR"/>
+        <result column="user_phone" property="user_name" jdbcType="FLOAT"/>
+        <result column="user_email" property="user_email" jdbcType="VARCHAR" />
+        <result column="user_passWord" property="user_passWord" jdbcType="VARCHAR"/>
+        <result column="user_createDate" property="user_createDate" jdbcType="DATE"/>
+        <result column="user_gender" property="user_gender" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="findUserEmail" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from cinsos_user
+        <where>
+            <if test="user_email != null and user_email != ''">
+                　　  user_email =#{user_email}
+                　　</if>
+        </where>
+    </select>
+    <select id="findUserPhone" resultMap="BaseResultMap" parameterType="java.lang.Float">
+        select * from cinsos_user
+        <where>
+            <if test="user_email != null and user_email != ''">
+                　　  user_phone =#{user_phone}
+                　　</if>
+        </where>
+    </select>
+
+</mapper>
